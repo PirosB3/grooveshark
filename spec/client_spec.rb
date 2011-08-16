@@ -78,7 +78,9 @@ describe 'Client' do
     client = Grooveshark::Client.new
     url = client.get_song_url(10467515)
     url.nil?.should == false
-    url.should match /^http:/i
+    url.should be_a Hash
+    url[:url].should_not be_nil
+    url[:key].should_not be_nil
   end
   
   it 'raises Grooveshark::NotFound for stream request with invalid song id' do

@@ -124,7 +124,7 @@ module Grooveshark
       if auth.empty?
         raise Grooveshark::NotFound, "Invalid song ID."
       else
-        "http://#{auth['ip']}/stream.php?streamKey=#{auth['stream_key']}"
+        {:url => "http://#{auth['ip']}/stream.php", :key => auth['stream_key']}
       end
     end
     
